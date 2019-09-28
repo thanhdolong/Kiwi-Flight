@@ -27,13 +27,27 @@ extension URLSession {
 class NetworkingManager: Networking {
     private let urlSession = URLSession.shared
     
-    public func fetchFlights(result: @escaping (Result<FlightResponse, NetworkError>) -> Void) {
+    public func fetchFlights(result: @escaping (Result<[Flight], NetworkError>) -> Void) {
         
         guard let url = try? KiwiRoute.popularFlights.asURLComponents()?.url else {
             return result(.failure(NetworkError.badRequest))
         }
         
-        fetchDecodable(url: url, completion: result)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
+        
+        fetchDecodable(url: url, decoder: decoder) { (response: Result<FlightResponse, NetworkError>) in
+            switch response {
+            case .success(let values):
+                let flightResult = values.data.map { (flightData) -> Flight in
+                    return Flight(flightResponse: flightData)
+                }
+                
+                result(.success(flightResult))
+            case .failure(let error):
+                result(.failure(error))
+            }
+        }
     }
     
     private func fetchDecodable<T: Decodable>(url: URL, decoder: JSONDecoder = JSONDecoder(), completion: @escaping (Result<T, NetworkError>) -> Void) {
