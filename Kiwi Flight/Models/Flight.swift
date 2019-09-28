@@ -23,8 +23,8 @@ extension Flight {
         from = flightResponse.cityFrom
         to = flightResponse.cityTo
         price = flightResponse.price
-        departureTime = flightResponse.dTime
-        arrivalTime = flightResponse.aTime
+        departureTime = flightResponse.dTimeUTC
+        arrivalTime = flightResponse.aTimeUTC
         duration = flightResponse.fly_duration
         linkToBook = flightResponse.deep_link
     }

@@ -28,8 +28,13 @@ class NetworkingManager: Networking {
     private let urlSession = URLSession.shared
     
     public func fetchFlights(result: @escaping (Result<[Flight], NetworkError>) -> Void) {
+        let dateFrom = Date()
+        let dateTo = Calendar.current.date(byAdding: .day, value: 7, to: dateFrom)!
         
-        guard let url = try? KiwiRoute.popularFlights(dateFrom: "29/09/2019", dateTo: "29/10/2019").asURLComponents()?.url else {
+        let format = DateFormatter()
+        format.dateFormat = "dd/MM/yyyy"
+        
+        guard let url = try? KiwiRoute.popularFlights(dateFrom: format.string(from: dateFrom), dateTo: format.string(from: dateTo)).asURLComponents()?.url else {
             return result(.failure(NetworkError.badRequest))
         }
         

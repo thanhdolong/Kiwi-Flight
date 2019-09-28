@@ -15,8 +15,8 @@ struct FlightResponse: Codable {
         let cityFrom: String
         let cityTo: String
         let price: Int
-        let dTime: Date
-        let aTime: Date
+        let dTimeUTC: Date
+        let aTimeUTC: Date
         let distance: Double
         let fly_duration: String
         let deep_link: URL

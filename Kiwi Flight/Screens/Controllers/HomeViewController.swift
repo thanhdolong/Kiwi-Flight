@@ -43,7 +43,6 @@ class HomeViewController: UIViewController {
         
         registerCellForReuse()
         requestFlightOffers()
-        // Do any additional setup after loading the view.
     }
     
     @objc func refresh(_ sender: UIRefreshControl) {
