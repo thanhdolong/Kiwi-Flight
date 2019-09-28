@@ -10,7 +10,19 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    let flightService = NetworkingManager()
     var viewModel: FlightViewModel?
+    var indicator: UIView?
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self,
+                                 action: #selector(refresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Flight Offers")
+        return refreshControl
+    }()
     
     var homeView: HomeView! {
         guard isViewLoaded else { return nil }
@@ -21,11 +33,25 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         homeView.tableView.delegate = homeView
         homeView.tableView.dataSource = self
+        homeView.tableView.addSubview(refreshControl)
         
         registerCellForReuse()
+        requestFlightOffers()
+        // Do any additional setup after loading the view.
+    }
+    
+    @objc func refresh(_ sender: UIRefreshControl) {
+        self.requestFlightOffers()
+    }
+    
+    private func registerCellForReuse() {
+        homeView.tableView.register(FlightTableViewCell.nib, forCellReuseIdentifier: FlightTableViewCell.reuseIdentifier)
+    }
+    
+    private func requestFlightOffers() {
+        indicator = showActivityIndicatory(onView: self.view)
         
-        let network = NetworkingManager()
-        network.fetchFlights { (result) in
+        flightService.fetchFlights { (result) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
@@ -35,12 +61,14 @@ class HomeViewController: UIViewController {
             case .failure(let error):
                 print(error)
             }
+            
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+                
+                guard let indicator = self.indicator else { return }
+                self.removeIndicator(indicator: indicator)
+            }
         }
-        // Do any additional setup after loading the view.
-    }
-    
-    private func registerCellForReuse() {
-        homeView.tableView.register(FlightTableViewCell.nib, forCellReuseIdentifier: FlightTableViewCell.reuseIdentifier)
     }
 }
 
