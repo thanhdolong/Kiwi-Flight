@@ -29,7 +29,7 @@ class NetworkingManager: Networking {
     
     public func fetchFlights(result: @escaping (Result<[Flight], NetworkError>) -> Void) {
         
-        guard let url = try? KiwiRoute.popularFlights.asURLComponents()?.url else {
+        guard let url = try? KiwiRoute.popularFlights(dateFrom: "29/09/2019", dateTo: "29/10/2019").asURLComponents()?.url else {
             return result(.failure(NetworkError.badRequest))
         }
         

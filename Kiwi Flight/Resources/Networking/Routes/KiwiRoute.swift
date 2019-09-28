@@ -9,7 +9,7 @@
 import Foundation
 
 public enum KiwiRoute {
-    case popularFlights
+    case popularFlights(dateFrom: String, dateTo: String)
 }
 
 extension KiwiRoute: Route {
@@ -33,7 +33,7 @@ extension KiwiRoute: Route {
     
     var parameters: Parameters? {
         switch self {
-        case .popularFlights:
+        case .popularFlights(let dateFrom, let dateTo):
             return [
                 "v": "3",
                 "sort:": "popularity",
@@ -43,6 +43,8 @@ extension KiwiRoute: Route {
                 "infants": "0",
                 "flyFrom": "49.2-16.61-250km",
                 "to": "anywhere",
+                "dateFrom": dateFrom,
+                "dateTo": dateTo,
                 "typeFlight": "oneway",
                 "limit": "5",
                 "one_per_date": "1",
