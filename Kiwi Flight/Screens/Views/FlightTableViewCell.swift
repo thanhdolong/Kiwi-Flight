@@ -14,9 +14,11 @@ public protocol FlightCell: class {
     var priceLabel: UILabel! { get }
     var departureTimeLabel: UILabel! { get }
     var durationLabel: UILabel! { get }
+    var bookButton: UIButton! { get }
 }
 
 class FlightTableViewCell: UITableViewCell, FlightCell, ReusableView {
+    
     @IBOutlet weak var fromLabel: UILabel!
     
     @IBOutlet weak var toLabel: UILabel!
@@ -33,16 +35,4 @@ class FlightTableViewCell: UITableViewCell, FlightCell, ReusableView {
             bookButton.backgroundColor = UIColor(named: "backgroundButtonColor")
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

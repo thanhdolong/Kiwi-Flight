@@ -8,11 +8,17 @@
 
 import UIKit
 
+public protocol HomeViewControllerDelegate: class {
+    func didBookFlightButtonPressed(url: URL?)
+}
+
 class HomeViewController: UIViewController {
     
     let flightService = NetworkingManager()
     var viewModel: FlightViewModel?
     var indicator: UIView?
+    
+    weak var delegate: HomeViewControllerDelegate?
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -42,6 +48,12 @@ class HomeViewController: UIViewController {
     
     @objc func refresh(_ sender: UIRefreshControl) {
         self.requestFlightOffers()
+    }
+    
+
+    @IBAction func didBookFlighButtonPressed(_ sender: UIButton) {
+        let url = viewModel?.getURL(from: sender.tag)
+        delegate?.didBookFlightButtonPressed(url: url)
     }
     
     private func registerCellForReuse() {

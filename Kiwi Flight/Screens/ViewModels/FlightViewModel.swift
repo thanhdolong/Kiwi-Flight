@@ -19,8 +19,16 @@ public class FlightViewModel {
         return flights.count
     }
     
+    private func getFlight(from index: Int) -> Flight {
+        return flights[index]
+    }
+    
+    public func getURL(from index: Int) -> URL {
+        return getFlight(from: index).linkToBook
+    }
+    
     public func configureFlightCell(_ view: FlightCell, for indexPath: IndexPath) {
-        let flight = flights[indexPath.row]
+        let flight = getFlight(from: indexPath.row)
         
         let format = DateFormatter()
         format.dateFormat = "HH:mm"
@@ -33,5 +41,6 @@ public class FlightViewModel {
         view.toLabel.text = "\(format.string(from: flight.arrivalTime)) \(flight.to)"
         view.durationLabel.text = "Travel time: \(flight.duration)"
         view.priceLabel.text = "\(flight.price) €"
+        view.bookButton.tag = indexPath.row
     }
 }
