@@ -21,6 +21,9 @@
 		6F9302DD233F9BD100EE911C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9302DB233F9BD100EE911C /* HomeViewController.swift */; };
 		6F9302DE233F9BD100EE911C /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F9302DC233F9BD100EE911C /* HomeView.xib */; };
 		6F9302E0233F9C0D00EE911C /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9302DF233F9C0D00EE911C /* HomeCoordinator.swift */; };
+		6F930302233FA59B00EE911C /* KiwiRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F930301233FA59B00EE911C /* KiwiRoute.swift */; };
+		6F930304233FAEBA00EE911C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F930303233FAEBA00EE911C /* NetworkError.swift */; };
+		6F930306233FBD1600EE911C /* FlightResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F930305233FBD1600EE911C /* FlightResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		6F9302DB233F9BD100EE911C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6F9302DC233F9BD100EE911C /* HomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
 		6F9302DF233F9C0D00EE911C /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		6F930301233FA59B00EE911C /* KiwiRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KiwiRoute.swift; sourceTree = "<group>"; };
+		6F930303233FAEBA00EE911C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		6F930305233FBD1600EE911C /* FlightResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				6F9302D6233F9A4200EE911C /* Route.swift */,
+				6F930301233FA59B00EE911C /* KiwiRoute.swift */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -199,6 +206,8 @@
 		6F9302D8233F9AA800EE911C /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				6F930303233FAEBA00EE911C /* NetworkError.swift */,
+				6F930305233FBD1600EE911C /* FlightResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -279,10 +288,13 @@
 				6F9302C8233F98FB00EE911C /* Coordinator.swift in Sources */,
 				6F9302A9233F956E00EE911C /* AppDelegate.swift in Sources */,
 				6F9302CD233F996300EE911C /* UIViewController.swift in Sources */,
+				6F930302233FA59B00EE911C /* KiwiRoute.swift in Sources */,
 				6F9302E0233F9C0D00EE911C /* HomeCoordinator.swift in Sources */,
 				6F9302CA233F992300EE911C /* Router.swift in Sources */,
+				6F930306233FBD1600EE911C /* FlightResponse.swift in Sources */,
 				6F9302AB233F956E00EE911C /* SceneDelegate.swift in Sources */,
 				6F9302DD233F9BD100EE911C /* HomeViewController.swift in Sources */,
+				6F930304233FAEBA00EE911C /* NetworkError.swift in Sources */,
 				6F9302D4233F9A1F00EE911C /* NetworkingManager.swift in Sources */,
 				6F9302D0233F999500EE911C /* ReusableView.swift in Sources */,
 			);

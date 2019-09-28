@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias Parameters = [String: Any]
+public typealias Parameters = [String: String]
 
 protocol Route {
     var baseURL: String { get }
@@ -26,4 +26,22 @@ public enum HTTPMethod: String {
     case options = "OPTIONS"
     case trace = "TRACE"
     case connect = "CONNECT"
+}
+
+extension Route {
+    public func asURLComponents() throws -> URLComponents? {
+        guard let url = URL(string: baseURL) else { throw NetworkError.badRequest }
+        var urlComponents = URLComponents(url: url.appendingPathComponent(path), resolvingAgainstBaseURL: true)
+        
+        // Parameters
+        if let parameters = parameters {
+            do {
+                if method == .get {
+                    urlComponents?.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+                }
+            }
+        }
+        
+        return urlComponents
+    }
 }

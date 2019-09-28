@@ -12,7 +12,15 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let network = NetworkingManager()
+        network.fetchFlights { (result) in
+            switch result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(error)
+            }
+        }
         // Do any additional setup after loading the view.
     }
 
