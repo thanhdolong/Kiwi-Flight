@@ -14,7 +14,7 @@ public protocol HomeViewControllerDelegate: class {
 
 class HomeViewController: UIViewController {
     
-    let flightService = NetworkingManager()
+    let flightService: FlightService
     var viewModel: FlightViewModel?
     var indicator: UIView?
     
@@ -34,7 +34,16 @@ class HomeViewController: UIViewController {
         guard isViewLoaded else { return nil }
         return (view as! HomeView)
     }
-
+    
+    init(flightService: FlightService) {
+        self.flightService = flightService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView.tableView.delegate = homeView
