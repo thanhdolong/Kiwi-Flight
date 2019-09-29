@@ -12,7 +12,8 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     public lazy var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
-    public lazy var coordinator = HomeCoordinator(router: router)
+    public lazy var appDependency = AppDependency()
+    public lazy var coordinator = HomeCoordinator(router: router, container: appDependency)
     public lazy var router = AppDelegateRouter(window: window!)
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {

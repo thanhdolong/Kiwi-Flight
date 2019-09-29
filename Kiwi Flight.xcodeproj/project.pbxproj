@@ -29,6 +29,9 @@
 		6F93030C233FD6C700EE911C /* FlightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F93030B233FD6C700EE911C /* FlightViewModel.swift */; };
 		6F93030F233FD7EB00EE911C /* FlightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F93030D233FD7EB00EE911C /* FlightTableViewCell.swift */; };
 		6F930310233FD7EB00EE911C /* FlightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F93030E233FD7EB00EE911C /* FlightTableViewCell.xib */; };
+		6F9303122340BBEF00EE911C /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9303112340BBEF00EE911C /* URLSession.swift */; };
+		6F9303152340BDE700EE911C /* FlightServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9303142340BDE700EE911C /* FlightServiceAPI.swift */; };
+		6F9303182340BFFD00EE911C /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9303172340BFFD00EE911C /* AppDependency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		6F93030B233FD6C700EE911C /* FlightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightViewModel.swift; sourceTree = "<group>"; };
 		6F93030D233FD7EB00EE911C /* FlightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightTableViewCell.swift; sourceTree = "<group>"; };
 		6F93030E233FD7EB00EE911C /* FlightTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlightTableViewCell.xib; sourceTree = "<group>"; };
+		6F9303112340BBEF00EE911C /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		6F9303142340BDE700EE911C /* FlightServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightServiceAPI.swift; sourceTree = "<group>"; };
+		6F9303172340BFFD00EE911C /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,7 @@
 				6F9302A8233F956E00EE911C /* AppDelegate.swift */,
 				6F9302AA233F956E00EE911C /* SceneDelegate.swift */,
 				6F9302B3233F957000EE911C /* LaunchScreen.storyboard */,
+				6F9303172340BFFD00EE911C /* AppDependency.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -187,6 +194,7 @@
 			children = (
 				6F9302CC233F996300EE911C /* UIViewController.swift */,
 				6F9302CF233F999500EE911C /* ReusableView.swift */,
+				6F9303112340BBEF00EE911C /* URLSession.swift */,
 			);
 			path = "Utilities+Extensions";
 			sourceTree = "<group>";
@@ -194,6 +202,7 @@
 		6F9302D1233F9A0500EE911C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				6F9303132340BDD500EE911C /* Services */,
 				6F9302D8233F9AA800EE911C /* Responses */,
 				6F9302D5233F9A2800EE911C /* Routes */,
 				6F9302D2233F9A0B00EE911C /* Manager */,
@@ -225,6 +234,14 @@
 				6F930305233FBD1600EE911C /* FlightResponse.swift */,
 			);
 			path = Responses;
+			sourceTree = "<group>";
+		};
+		6F9303132340BDD500EE911C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6F9303142340BDE700EE911C /* FlightServiceAPI.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,10 +322,13 @@
 				6F930308233FC77100EE911C /* Flight.swift in Sources */,
 				6F9302A9233F956E00EE911C /* AppDelegate.swift in Sources */,
 				6F9302CD233F996300EE911C /* UIViewController.swift in Sources */,
+				6F9303182340BFFD00EE911C /* AppDependency.swift in Sources */,
+				6F9303152340BDE700EE911C /* FlightServiceAPI.swift in Sources */,
 				6F930302233FA59B00EE911C /* KiwiRoute.swift in Sources */,
 				6F93030C233FD6C700EE911C /* FlightViewModel.swift in Sources */,
 				6F9302E0233F9C0D00EE911C /* HomeCoordinator.swift in Sources */,
 				6F9302CA233F992300EE911C /* Router.swift in Sources */,
+				6F9303122340BBEF00EE911C /* URLSession.swift in Sources */,
 				6F930306233FBD1600EE911C /* FlightResponse.swift in Sources */,
 				6F9302AB233F956E00EE911C /* SceneDelegate.swift in Sources */,
 				6F9302DD233F9BD100EE911C /* HomeViewController.swift in Sources */,

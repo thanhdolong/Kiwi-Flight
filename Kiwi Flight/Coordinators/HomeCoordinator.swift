@@ -13,15 +13,17 @@ public class HomeCoordinator: Coordinator {
   // MARK: - Instance Properties
   public var children: [Coordinator] = []
   public let router: Router
+  public var container: Container
 
   // MARK: - Object Lifecycle
-  public init(router: Router) {
+  public init(router: Router, container: Container) {
     self.router = router
+    self.container = container
   }
 
   // MARK: - Instance Methods
   public func present(animated: Bool, onDismissed: (() -> Void)?) {
-    let viewController = HomeViewController()
+    let viewController = HomeViewController(flightService: container.flightService)
     viewController.delegate = self
     router.present(viewController, animated: animated, onDismissed: onDismissed)
   }
